@@ -1,9 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33502.453
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "TranslaTale", "TranslaTale\TranslaTale.vbproj", "{93ACB8ED-B285-432B-BF75-D78091D88D07}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1A02A6EB-A1D7-41FD-838D-A168DB53D818} = {1A02A6EB-A1D7-41FD-838D-A168DB53D818}
+	EndProjectSection
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "TTgroupControl", "TTgroupControl\TTgroupControl.vbproj", "{1A02A6EB-A1D7-41FD-838D-A168DB53D818}"
 EndProject
@@ -37,8 +40,12 @@ Global
 		{1A02A6EB-A1D7-41FD-838D-A168DB53D818}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{1A02A6EB-A1D7-41FD-838D-A168DB53D818}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{1A02A6EB-A1D7-41FD-838D-A168DB53D818}.Release|x86.ActiveCfg = Release|Any CPU
+		{1A02A6EB-A1D7-41FD-838D-A168DB53D818}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B50410F4-58AD-4A87-8344-C31A83978673}
 	EndGlobalSection
 EndGlobal

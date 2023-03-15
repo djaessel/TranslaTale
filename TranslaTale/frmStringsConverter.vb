@@ -150,7 +150,7 @@ Public Class frmStringsConverter
         End Try
     End Sub
 
-    Function closeForm()
+    Private Sub closeForm()
         Panel2.Visible = False
         btnNext.Text = "&Next >"
         btnCancel.Visible = True
@@ -161,7 +161,7 @@ Public Class frmStringsConverter
         btnCancel.Enabled = False
         btnNext.Enabled = True
         btnReport.Visible = False
-    End Function
+    End Sub
 
     Sub btnNext_Click(sender As Object, e As EventArgs) Handles btnNext.Click
         If btnNext.Text = "S&ave" Then

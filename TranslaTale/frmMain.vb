@@ -40,7 +40,7 @@ Public NotInheritable Class frmMain
         End If
 
         SpriteFontBox1.FontPath = fontResource
-        SpriteFontBox1.LoadFont()
+        'SpriteFontBox1.LoadFont() 'included in FontPath Property set!
 
         Dim ApplicationTitle As String
         If My.Application.Info.Title <> "" Then
@@ -94,11 +94,11 @@ Public NotInheritable Class frmMain
     End Sub
 
     Private Sub repackProject()
-        Dim inDataFile As String
-        Dim stringsFile As String
-        Dim imagesPath As String
-        Dim fontsFile As String
-        Dim outDataFile As String
+        Dim inDataFile As String = ""
+        Dim stringsFile As String = ""
+        Dim imagesPath As String = ""
+        Dim fontsFile As String = ""
+        Dim outDataFile As String = ""
 
         ProjectManager.Read(stringsFile, imagesPath, fontsFile, inDataFile, outDataFile)
         ''        inDataFile &= "\data.win"

@@ -16,7 +16,7 @@ Public Class frmFontImporter
         Process.Start("http://www.yoyogames.com/download/studio/free")
     End Sub
 
-    Function checkFontCollection()
+    Private Sub checkFontCollection()
         Dim fontsCollection As New InstalledFontCollection()
         Dim fontsToFind As Array = {"Crypt of Tomorrow", "8bitoperator JVE", "Hachicro", "DotumChe", "Mars Needs Cunnilingus", "Papyrus", "Comic Sans MS"}
         lblCheck.Text = "Checking installed fonts..."
@@ -45,9 +45,9 @@ Public Class frmFontImporter
             lstFontsNotFound.Visible = False
             lblRebootTT.Visible = False
         End If
-    End Function
+    End Sub
 
-    Function closeForm()
+    Private Sub closeForm()
         wizardStep = 1
         btnNext.Text = "&Next >"
         Panel4.Visible = False
@@ -70,7 +70,7 @@ Public Class frmFontImporter
         btnNext.Visible = True
         btnCancel.Visible = True
         Me.Close()
-    End Function
+    End Sub
 
     Private Sub btnCheckConfig_Click(sender As Object, e As EventArgs)
         checkFontCollection()
@@ -204,7 +204,7 @@ Public Class frmFontImporter
         End If
     End Sub
 
-    Private Function repackFonts(ByVal winFile As String)
+    Private Sub repackFonts(ByVal winFile As String)
         Dim tempFolder As String = GetTempFolder()
         Dim unpackProcess As Process
         Dim repackProcess As Process
@@ -327,7 +327,7 @@ Public Class frmFontImporter
         System.IO.Directory.Delete(tempFolder, True)
         MsgBox("Process finished", vbInformation)
         Me.Close()
-    End Function
+    End Sub
 
     Private Sub btnStrings_Click(sender As Object, e As EventArgs) Handles btnStrings.Click
         ofdPaths.Filter = "Strings.txt file|*.txt"

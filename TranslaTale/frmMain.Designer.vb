@@ -1,4 +1,6 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+﻿Imports UTSpriteFontBox
+
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmMain
     Inherits System.Windows.Forms.Form
 
@@ -599,7 +601,7 @@ Partial Class frmMain
     Friend WithEvents AboutToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents PictureBox4 As System.Windows.Forms.PictureBox
     Friend WithEvents ToolStripButton5 As System.Windows.Forms.ToolStripButton
-    Friend WithEvents SpriteFontBox1 As UTSpriteFontBox.SpriteFontBox
+    Friend WithEvents SpriteFontBox1 As SpriteFontBox
     Friend WithEvents ToolStripButton6 As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripSeparator3 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents ToolStripSeparator4 As System.Windows.Forms.ToolStripSeparator
