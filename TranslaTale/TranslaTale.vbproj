@@ -308,6 +308,13 @@
     <Folder Include="bin\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>del $(TargetDir)\Resources\WinExtract.exe
+copy $(SolutionDir)\..\UndertaleTools\WinExtract\WinExtract\bin\Release\WinExtract.exe $(TargetDir)\Resources\WinExtract.exe
+
+del $(TargetDir)\Resources\WinPack.exe
+copy $(SolutionDir)\..\UndertaleTools\WinPack\WinPack\bin\Release\WinPack.exe $(TargetDir)\Resources\WinPack.exe</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
