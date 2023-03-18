@@ -219,7 +219,7 @@ Public NotInheritable Class frmMain
         System.IO.File.Copy(stringsFile, tempFolder & "\DATAWIN\translate.txt")
 
         p.FileName = filenamePack
-        p.Arguments = """" & tempFolder & "\DATAWIN "" """ & tempFolder & "\packed.win"" -tt"
+        p.Arguments = """" & tempFolder & "\DATAWIN"" """ & tempFolder & "\packed.win"" -tt"
 
         repackProcess = Process.Start(p)
         repackProcess.WaitForExit()
