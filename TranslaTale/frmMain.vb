@@ -5,6 +5,7 @@ Imports System.IO
 Imports System.Drawing.Imaging
 Imports System.Xml
 Imports System.Text
+Imports System.Windows.Forms.LinkLabel
 
 Public NotInheritable Class frmMain
 
@@ -110,26 +111,27 @@ Public NotInheritable Class frmMain
 
 
         Dim filename As String = Application.StartupPath + "\Resources\WinExtract.exe"
-        System.IO.File.WriteAllBytes(filename, My.Resources.WinExtract)
+        'System.IO.File.WriteAllBytes(filename, My.Resources.WinExtract) 'ignore resources version since it is outdated and not working anymore
 
         Dim filenamePack As String = Application.StartupPath + "\Resources\WinPack.exe"
-        System.IO.File.WriteAllBytes(filenamePack, My.Resources.WinPack)
+        'System.IO.File.WriteAllBytes(filenamePack, My.Resources.WinPack) 'ignore resources version since it is outdated and not working anymore
 
+        ' Deactivated old UTFONTS file code since it is not used anymore and working as it seems!
         Dim p As New ProcessStartInfo
-        p.FileName = filename
-        p.Arguments = """" & fontsFile & """ """ & tempFolder & "\UTFONTS"" -tt"
+        'p.FileName = filename
+        'p.Arguments = """" & fontsFile & """ """ & tempFolder & "\UTFONTS"" -tt"
 
-        unpackProcess = Process.Start(p)
-        unpackProcess.WaitForExit()
+        'unpackProcess = Process.Start(p)
+        'unpackProcess.WaitForExit()
 
         Dim i As Integer
-        For i = 0 To 4
-            If Not unpackProcess.HasExited Then
-                unpackProcess.Refresh()
-            Else
-                Exit For
-            End If
-        Next i
+        'For i = 0 To 4
+        '    If Not unpackProcess.HasExited Then
+        '        unpackProcess.Refresh()
+        '    Else
+        '        Exit For
+        '    End If
+        'Next i
 
         p.FileName = filename
         p.Arguments = """" & inDataFile & """ """ & tempFolder & "\DATAWIN"" -tt"
@@ -148,46 +150,62 @@ Public NotInheritable Class frmMain
 
         My.Computer.FileSystem.DeleteFile(tempFolder & "\DATAWIN\translate.txt")
 
-        System.IO.File.Copy(tempFolder & "\UTFONTS\FONT\UT_8bit.font.gmx", tempFolder & "\DATAWIN\FONT_new\0_UT_8bit (8bitoperator JVE).font.gmx")
-        System.IO.File.Copy(tempFolder & "\UTFONTS\FONT\UT_8bit.png", tempFolder & "\DATAWIN\FONT_new\UT_8bit.png")
+        ' Deactivated old patch file mechanism, since all files seem to get just copied and also are outdated and do no longer exist (in that form)
 
-        Dim patchFile As System.IO.StreamWriter
-        patchFile = My.Computer.FileSystem.OpenTextFileWriter(tempFolder & "\DATAWIN\FONT_new\patch.txt", True)
-        patchFile.WriteLine("2;0_UT_8bit (8bitoperator JVE).font.gmx")
+        'System.IO.File.Copy(tempFolder & "\DATAWIN\FONT\UT_8bit.font.gmx", tempFolder & "\DATAWIN\FONT_new\0_UT_8bit (8bitoperator JVE).font.gmx")
+        'System.IO.File.Copy(tempFolder & "\DATAWIN\FONT\UT_8bit.png", tempFolder & "\DATAWIN\FONT_new\UT_8bit.png")
 
-        System.IO.File.Copy(tempFolder & "\UTFONTS\FONT\UT_8bitLarge.font.gmx", tempFolder & "\DATAWIN\FONT_new\1_UT_8bitLarge (8bitoperator JVE).font.gmx")
-        System.IO.File.Copy(tempFolder & "\UTFONTS\FONT\UT_8bitLarge.png", tempFolder & "\DATAWIN\FONT_new\UT_8bitLarge.png")
-        patchFile.WriteLine("1;1_UT_8bitLarge (8bitoperator JVE).font.gmx")
+        'Dim patchFile As System.IO.StreamWriter
+        'patchFile = My.Computer.FileSystem.OpenTextFileWriter(tempFolder & "\DATAWIN\FONT_new\patch.txt", True)
+        'patchFile.WriteLine("2;0_UT_8bit (8bitoperator JVE).font.gmx")
 
-        System.IO.File.Copy(tempFolder & "\UTFONTS\FONT\UT_Papyrus.font.gmx", tempFolder & "\DATAWIN\FONT_new\2_UT_Papyrus (Papyrus).font.gmx")
-        System.IO.File.Copy(tempFolder & "\UTFONTS\FONT\UT_Papyrus.png", tempFolder & "\DATAWIN\FONT_new\UT_Papyrus.png")
-        patchFile.WriteLine("9;2_UT_Papyrus (Papyrus).font.gmx")
+        'System.IO.File.Copy(tempFolder & "\DATAWIN\FONT\UT_8bitLarge.font.gmx", tempFolder & "\DATAWIN\FONT_new\1_UT_8bitLarge (8bitoperator JVE).font.gmx")
+        'System.IO.File.Copy(tempFolder & "\DATAWIN\FONT\UT_8bitLarge.png", tempFolder & "\DATAWIN\FONT_new\UT_8bitLarge.png")
+        'patchFile.WriteLine("1;1_UT_8bitLarge (8bitoperator JVE).font.gmx")
 
-        System.IO.File.Copy(tempFolder & "\UTFONTS\FONT\UT_sans.font.gmx", tempFolder & "\DATAWIN\FONT_new\3_UT_sans (Comic Sans MS).font.gmx")
-        System.IO.File.Copy(tempFolder & "\UTFONTS\FONT\UT_sans.png", tempFolder & "\DATAWIN\FONT_new\UT_sans.png")
-        patchFile.WriteLine("8;3_UT_sans (Comic Sans MS).font.gmx")
+        'System.IO.File.Copy(tempFolder & "\DATAWIN\FONT\UT_Papyrus.font.gmx", tempFolder & "\DATAWIN\FONT_new\2_UT_Papyrus (Papyrus).font.gmx")
+        'System.IO.File.Copy(tempFolder & "\DATAWIN\FONT\UT_Papyrus.png", tempFolder & "\DATAWIN\FONT_new\UT_Papyrus.png")
+        'patchFile.WriteLine("9;2_UT_Papyrus (Papyrus).font.gmx")
 
-        System.IO.File.Copy(tempFolder & "\UTFONTS\FONT\UT_Hachicro.font.gmx", tempFolder & "\DATAWIN\FONT_new\4_UT_Hachicro (Hachicro).font.gmx")
-        System.IO.File.Copy(tempFolder & "\UTFONTS\FONT\UT_Hachicro.png", tempFolder & "\DATAWIN\FONT_new\UT_Hachicro.png")
-        patchFile.WriteLine("6;4_UT_Hachicro (Hachicro).font.gmx")
+        'System.IO.File.Copy(tempFolder & "\DATAWIN\FONT\UT_sans.font.gmx", tempFolder & "\DATAWIN\FONT_new\3_UT_sans (Comic Sans MS).font.gmx")
+        'System.IO.File.Copy(tempFolder & "\DATAWIN\FONT\UT_sans.png", tempFolder & "\DATAWIN\FONT_new\UT_sans.png")
+        'patchFile.WriteLine("8;3_UT_sans (Comic Sans MS).font.gmx")
 
-        System.IO.File.Copy(tempFolder & "\UTFONTS\FONT\UT_DotumChe.font.gmx", tempFolder & "\DATAWIN\FONT_new\5_UT_DotumChe (DotumChe).font.gmx", True)
-        System.IO.File.Copy(tempFolder & "\UTFONTS\FONT\UT_DotumChe.png", tempFolder & "\DATAWIN\FONT_new\UT_DotumChe.png", True)
-        patchFile.WriteLine("5;5_UT_DotumChe (DotumChe).font.gmx")
+        'System.IO.File.Copy(tempFolder & "\DATAWIN\FONT\UT_Hachicro.font.gmx", tempFolder & "\DATAWIN\FONT_new\4_UT_Hachicro (Hachicro).font.gmx")
+        'System.IO.File.Copy(tempFolder & "\DATAWIN\FONT\UT_Hachicro.png", tempFolder & "\DATAWIN\FONT_new\UT_Hachicro.png")
+        'patchFile.WriteLine("6;4_UT_Hachicro (Hachicro).font.gmx")
 
-        System.IO.File.Copy(tempFolder & "\UTFONTS\FONT\UT_DotumCheSmall.font.gmx", tempFolder & "\DATAWIN\FONT_new\6_UT_DotumCheSmall (DotumChe).font.gmx", True)
-        System.IO.File.Copy(tempFolder & "\UTFONTS\FONT\UT_DotumCheSmall.png", tempFolder & "\DATAWIN\FONT_new\UT_DotumCheSmall.png", True)
-        patchFile.WriteLine("4;6_UT_DotumCheSmall (DotumChe).font.gmx")
+        'System.IO.File.Copy(tempFolder & "\DATAWIN\FONT\UT_DotumChe.font.gmx", tempFolder & "\DATAWIN\FONT_new\5_UT_DotumChe (DotumChe).font.gmx", True)
+        'System.IO.File.Copy(tempFolder & "\DATAWIN\FONT\UT_DotumChe.png", tempFolder & "\DATAWIN\FONT_new\UT_DotumChe.png", True)
+        'patchFile.WriteLine("5;5_UT_DotumChe (DotumChe).font.gmx")
 
-        System.IO.File.Copy(tempFolder & "\UTFONTS\FONT\UT_CryptOfTomorrow.font.gmx", tempFolder & "\DATAWIN\FONT_new\7_UT_CryptOfTomorrow (Crypt of Tomorrow).font.gmx", True)
-        System.IO.File.Copy(tempFolder & "\UTFONTS\FONT\UT_CryptOfTomorrow.png", tempFolder & "\DATAWIN\FONT_new\UT_CryptOfTomorrow.png", True)
-        patchFile.WriteLine("3;7_UT_CryptOfTomorrow (Crypt of Tomorrow).font.gmx")
+        'System.IO.File.Copy(tempFolder & "\DATAWIN\FONT\UT_DotumCheSmall.font.gmx", tempFolder & "\DATAWIN\FONT_new\6_UT_DotumCheSmall (DotumChe).font.gmx", True)
+        'System.IO.File.Copy(tempFolder & "\DATAWIN\FONT\UT_DotumCheSmall.png", tempFolder & "\DATAWIN\FONT_new\UT_DotumCheSmall.png", True)
+        'patchFile.WriteLine("4;6_UT_DotumCheSmall (DotumChe).font.gmx")
 
-        System.IO.File.Copy(tempFolder & "\UTFONTS\FONT\UT_MarsNeedsCunninlingus.font.gmx", tempFolder & "\DATAWIN\FONT_new\8_UT_MarsNeedsCunninlingus (Mars Needs Cunnilingus).font.gmx", True)
-        System.IO.File.Copy(tempFolder & "\UTFONTS\FONT\UT_MarsNeedsCunninlingus.png", tempFolder & "\DATAWIN\FONT_new\UT_MarsNeedsCunninlingus.png", True)
-        patchFile.WriteLine("7;8_UT_MarsNeedsCunninlingus (Mars Needs Cunnilingus).font.gmx")
+        'System.IO.File.Copy(tempFolder & "\DATAWIN\FONT\UT_CryptOfTomorrow.font.gmx", tempFolder & "\DATAWIN\FONT_new\7_UT_CryptOfTomorrow (Crypt of Tomorrow).font.gmx", True)
+        'System.IO.File.Copy(tempFolder & "\DATAWIN\FONT\UT_CryptOfTomorrow.png", tempFolder & "\DATAWIN\FONT_new\UT_CryptOfTomorrow.png", True)
+        'patchFile.WriteLine("3;7_UT_CryptOfTomorrow (Crypt of Tomorrow).font.gmx")
 
-        patchFile.Close()
+        'System.IO.File.Copy(tempFolder & "\DATAWIN\FONT\UT_MarsNeedsCunninlingus.font.gmx", tempFolder & "\DATAWIN\FONT_new\8_UT_MarsNeedsCunninlingus (Mars Needs Cunnilingus).font.gmx", True)
+        'System.IO.File.Copy(tempFolder & "\DATAWIN\FONT\UT_MarsNeedsCunninlingus.png", tempFolder & "\DATAWIN\FONT_new\UT_MarsNeedsCunninlingus.png", True)
+        'patchFile.WriteLine("7;8_UT_MarsNeedsCunninlingus (Mars Needs Cunnilingus).font.gmx")
+
+        'patchFile.Close()
+
+        ' Replacement code for font process START
+        Dim gmxFontFiles As String() = System.IO.Directory.GetFiles(tempFolder & "\DATAWIN\FONT", "*.gmx")
+        For Each file As String In gmxFontFiles
+            System.IO.File.Copy(file, tempFolder & "\DATAWIN\FONT_new\" & Split(file, "\").Last(), True)
+        Next
+
+        Dim pngFontFiles As String() = System.IO.Directory.GetFiles(tempFolder & "\DATAWIN\FONT", "*.png")
+        For Each file As String In pngFontFiles
+            System.IO.File.Copy(file, tempFolder & "\DATAWIN\FONT_new\" & Split(file, "\").Last(), True)
+        Next
+
+        System.IO.File.Copy(tempFolder & "\DATAWIN\FONT\fonts.txt", tempFolder & "\DATAWIN\FONT_new\patch.txt", True)
+        ' Replacement code for font process END
 
         For Each f In Directory.GetFiles(imagesPath, "*.png")
             If File.Exists(f) Then

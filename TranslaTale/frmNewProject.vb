@@ -85,7 +85,8 @@ Public Class frmNewProject
                 Exit For
             End If
         Next i
-        File.Copy(tmpPath & "\STRG.txt", outDirectory & "\CleanStrings.txt", True)
+        'File.Copy(tmpPath & "\STRG.txt", outDirectory & "\CleanStrings.txt", True) 'original code did not work with latest/used version of Undertale
+        File.Copy(tmpPath & "\original.txt", outDirectory & "\CleanStrings.txt", True)
         System.IO.Directory.Delete(tmpPath, True)
     End Sub
 
