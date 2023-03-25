@@ -56,3 +56,9 @@ Feel free to share your experiences and ideas.
 There might be coming a few new features depending on the needs and a few more fixes, that were not included yet.  
 > djaessel  
 Discord: djaessel | J•SYS#8078  
+  
+TODO:  
+====================  
+* Adding setup for additional Undertale tools  
+* Adding additional information  
+  
