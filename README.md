@@ -47,3 +47,12 @@ https://github.com/crumblingstatue/gmktool
 Thanks to ChrisBlue, developer of the UTSpriteFontBox library!
 
 https://twitter.com/_Chrisblue
+
+====================  
+This is the version including a few fixes and made ready to be used on a virtual machine for Android devices.  
+The compiled version including Limbo x86 PC Emulator APK version 4.1 can be found in the (pre-)releases.  
+  
+Feel free to share your experiences and ideas.  
+There might be coming a few new features depending on the needs and a few more fixes, that were not included yet.  
+> djaessel  
+Discord: djaessel | J•SYS#8078  
